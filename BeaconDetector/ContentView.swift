@@ -8,14 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var detector = Detector()
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        List ( detector.beaconsArray, id: \.self) { beacon in
+            Text(beacon.uuid.uuidString)
         }
-        .padding()
     }
 }
 
